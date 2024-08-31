@@ -1,0 +1,53 @@
+.formAddContact {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px;
+    border: 1px solid black;
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+.fieldWrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    position: relative;
+}
+
+.fieldInput {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+.errMessage {
+    margin-left: auto;
+    display: block;
+    color: red;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 8px;
+
+    position: absolute;
+    top: 4px;
+    right: 0;
+}
+
+.btnSubmitForm {
+    align-self: center;
+    min-width: 200px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+.btnSubmitForm:hover,
+.btnSubmitForm:focus {
+    background-color: royalblue;
+    color: white;
+}

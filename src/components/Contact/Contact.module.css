@@ -1,0 +1,42 @@
+.wrapperUserName,
+.wrapperUserPhone {
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+}
+
+.wrapperUserName {
+    margin-bottom: 8px;
+}
+
+.nameUser {
+    font-weight: 400;
+}
+
+.phoneUser {
+    font-size: 20px;
+}
+
+.phoneUser:hover,
+.phoneUser:focus {
+    color: royalblue;
+}
+
+.iconUser,
+.iconPhone {
+    font-size: 18px;
+}
+
+.btnDeleteUser {
+    align-self: center;
+    min-height: 40px;
+    min-width: 80px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+.btnDeleteUser:hover,
+.btnDeleteUser:focus {
+    background-color: royalblue;
+    color: white;
+}

@@ -1,0 +1,19 @@
+.wrapperFilterContacts {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 16px;
+}
+
+.findContacts {
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.inputSearchContacts {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
