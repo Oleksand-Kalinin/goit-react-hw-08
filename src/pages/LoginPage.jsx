@@ -2,7 +2,11 @@ import LoginForm from "../components/LoginForm/LoginForm";
 
 function LoginPage() {
   return (
-    <section>
+    <section
+      style={{
+        padding: "20px",
+      }}
+    >
       <LoginForm />
     </section>
   );

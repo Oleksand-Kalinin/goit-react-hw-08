@@ -22,7 +22,6 @@ export const apiRegister = createAsyncThunk(
             return data;
 
         } catch (error) {
-            console.log(error.message);
             return thunkApi.rejectWithValue(error.message);
         }
     }

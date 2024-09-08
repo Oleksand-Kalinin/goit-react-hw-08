@@ -13,7 +13,11 @@ function ContactsPage() {
   }, [dispatch]);
 
   return (
-    <section>
+    <section
+      style={{
+        padding: "20px",
+      }}
+    >
       <ContactForm />
       <SearchBox />
       <ContactList />

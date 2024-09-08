@@ -1,0 +1,31 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+}
+
+.username {
+    font-size: 20px;
+    letter-spacing: 0.15em;
+}
+
+.btnLogout {
+    padding: 8px 4px;
+    min-width: 80px;
+
+    border: none;
+    border-radius: 8px;
+
+    text-align: center;
+    color: black;
+    background-color: white;
+    transition:
+        color 250ms linear,
+        background-color 250ms linear;
+}
+
+.btnLogout:hover,
+.btnLogout:focus {
+    color: white;
+    background-color: black;
+}

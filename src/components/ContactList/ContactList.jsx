@@ -14,7 +14,17 @@ function ContactList() {
 
   console.log(filteredContacts);
 
-  if (contacts.length === 0) return <p>You don&apos;t have any contacts.</p>;
+  if (contacts.length === 0)
+    return (
+      <p
+        style={{
+          textAlign: "center",
+          fontSize: "30px",
+        }}
+      >
+        You don&apos;t have any contacts.
+      </p>
+    );
 
   return (
     <ul className={css.contactList}>

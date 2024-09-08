@@ -38,6 +38,12 @@
     right: 0;
 }
 
+.errorText {
+    text-align: center;
+    font-size: 12px;
+    color: red;
+}
+
 .btnSubmitForm {
     align-self: center;
     min-width: 200px;
