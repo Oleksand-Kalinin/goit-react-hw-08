@@ -1,0 +1,27 @@
+.nav {
+    display: flex;
+    column-gap: 8px;
+}
+
+.link {
+    padding: 10px 8px;
+    min-width: 210px;
+
+    border: none;
+    border-radius: 8px;
+
+    text-align: center;
+    color: black;
+    font-size: 18px;
+    background-color: white;
+    transition:
+        color 250ms linear,
+        background-color 250ms linear;
+}
+
+.link:hover,
+.link:focus,
+.active {
+    color: white;
+    background-color: black;
+}

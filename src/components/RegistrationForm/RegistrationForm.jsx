@@ -1,12 +1,17 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
-import css from "./LoginForm.module.css";
+import css from "./RegistrationForm.module.css";
 import { useDispatch } from "react-redux";
-import { apiLogin } from "../../redux/auth/operations";
+import { apiRegister } from "../../redux/auth/operations";
 // import { selectAuthError } from "../redux/auth/selectors";
 
-const LoginValidationSchema = Yup.object().shape({
+const RegistrationValidationSchema = Yup.object().shape({
+  name: Yup.string()
+    .required("The username is required")
+    .min(2, "The username must be at least 2 characters long.")
+    .max(100, "The username must be shorter than 100 characters."),
+
   password: Yup.string()
     .required("Password is required")
     .min(8, "The password must be at least 8 characters long")
@@ -17,26 +22,41 @@ const LoginValidationSchema = Yup.object().shape({
     .required("Email is required"),
 });
 
-function LoginForm() {
+function RegistrationForm() {
   const dispatch = useDispatch();
   //   const error = useSelector(selectAuthError);
   const INITIAL_VALUES = {
+    name: "",
     email: "",
     password: "",
   };
 
   const handleSubmit = (formData) => {
-    dispatch(apiLogin(formData));
+    dispatch(apiRegister(formData));
   };
 
   return (
     <Formik
       initialValues={INITIAL_VALUES}
       onSubmit={handleSubmit}
-      validationSchema={LoginValidationSchema}
+      validationSchema={RegistrationValidationSchema}
     >
       {({ errors }) => (
-        <Form className={css.loginForm}>
+        <Form className={css.registrationForm}>
+          <label className={css.fieldWrapper}>
+            <span>User name:</span>
+            <Field
+              className={css.fieldInput}
+              type="text"
+              name="name"
+              placeholder="Alex"
+            />
+            <ErrorMessage
+              className={css.errMessage}
+              name="name"
+              component="span"
+            />
+          </label>
           <label className={css.fieldWrapper}>
             <span>E-mail:</span>
             <Field
@@ -84,4 +104,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default RegistrationForm;
