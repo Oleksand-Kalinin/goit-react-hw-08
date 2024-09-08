@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { apiLogin, apiLogout, apiRegister } from "./operations";
+import { apiLogin, apiLogout, apiRefreshUser, apiRegister } from "./operations";
 
 const INITIAL_STATE = {
     user: {
@@ -20,13 +20,11 @@ const authSlice = createSlice({
         builder
 
             // Registration user
-            // .addCase(
-            //     apiRegister.pending,
-            //     (state, { payload }) => {
-            //         state.isLoggedIn = true;
-            //         state.token = payload.token;
-            //         state.user = payload.user;
-            //     })
+            .addCase(
+                apiRegister.pending,
+                (state) => {
+                    state.error = null;
+                })
             .addCase(
                 apiRegister.fulfilled,
                 (state, { payload }) => {
@@ -34,22 +32,18 @@ const authSlice = createSlice({
                     state.token = payload.token;
                     state.user = payload.user;
                 })
-            // .addCase(
-            //     apiRegister.rejected,
-            //     (state, { payload }) => {
-            //         state.isLoggedIn = true;
-            //         state.token = payload.token;
-            //         state.user = payload.user;
-            //     })
+            .addCase(
+                apiRegister.rejected,
+                (state, { payload }) => {
+                    state.error = payload;
+                })
 
             // Login user
-            // .addCase(
-            //     apiLogin.pending,
-            //     (state, { payload }) => {
-            //         state.isLoggedIn = true;
-            //         state.token = payload.token;
-            //         state.user = payload.user;
-            //     })
+            .addCase(
+                apiLogin.pending,
+                (state) => {
+                    state.error = null;
+                })
             .addCase(
                 apiLogin.fulfilled,
                 (state, { payload }) => {
@@ -57,24 +51,42 @@ const authSlice = createSlice({
                     state.token = payload.token;
                     state.user = payload.user;
                 })
-            // .addCase(
-            //     apiLogin.rejected,
-            //     (state, { payload }) => {
-            //         state.isLoggedIn = true;
-            //         state.token = payload.token;
-            //         state.user = payload.user;
-            //     })
+            .addCase(
+                apiLogin.rejected,
+                (state, { payload }) => {
+                    state.error = payload;
+                })
 
             // Logout user
-            .addCase(apiLogout.pending, (state) => {
-                state.error = null;
-            })
+            .addCase(apiLogout.pending,
+                (state) => {
+                    state.error = null;
+                })
             .addCase(apiLogout.fulfilled, () => {
                 return INITIAL_STATE;
             })
-            .addCase(apiLogout.rejected, (state, { payload }) => {
-                state.error = payload;
-            })
+            .addCase(apiLogout.rejected,
+                (state, { payload }) => {
+                    state.error = payload;
+                })
+
+            // Refresh user
+            .addCase(apiRefreshUser.pending,
+                (state) => {
+                    state.error = null;
+                    state.isRefreshing = true;
+                })
+            .addCase(apiRefreshUser.fulfilled,
+                (state, { payload }) => {
+                    state.isLoggedIn = true;
+                    state.user = payload;
+                    state.isRefreshing = false;
+                })
+            .addCase(apiRefreshUser.rejected,
+                (state, { payload }) => {
+                    state.error = payload;
+                    state.isRefreshing = false;
+                })
     }
 })
 

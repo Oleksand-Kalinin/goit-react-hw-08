@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const instance = axios.create({
+export const instance = axios.create({
     baseURL: "https://connections-api.goit.global/",
 })
 
@@ -70,9 +70,7 @@ export const apiRefreshUser = createAsyncThunk(
             const state = thunkApi.getState();
             const token = state.auth.token;
             setAuthHeaders(token);
-
             const { data } = await instance.get("users/current");
-
             return data;
         } catch (error) {
             return thunkApi.rejectWithValue(error.message);

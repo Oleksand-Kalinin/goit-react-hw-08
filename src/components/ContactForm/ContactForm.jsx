@@ -4,8 +4,8 @@ import * as Yup from "yup";
 import { useId } from "react";
 
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
-import { changeFilter } from "../../redux/filtersSlice";
+import { addContact } from "../../redux/contacts/operations";
+import { changeFilter } from "../../redux/filters/slice";
 
 import css from "./ContactForm.module.css";
 
